@@ -33,7 +33,6 @@ public class TaskControllerTest {
     public void shouldNotSaveTaskWidhoutDecription() {
         Task task = new Task();
         task.setDueDate(LocalDate.now());
-        task.setTask("Send email");
         try {
             taskController.save(task);
             Assert.fail("Should not pass here");
