@@ -11,6 +11,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.runners.MockitoJUnitRunner;
 
@@ -85,6 +86,7 @@ public class TaskControllerTest {
         task.setDueDate(LocalDate.now().plusDays(1));
         task.setTask("Send email");
         taskController.save(task);
+        Mockito.verify(taskRepo).save(task);
     }
 
 
