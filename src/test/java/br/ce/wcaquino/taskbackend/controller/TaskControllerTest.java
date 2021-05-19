@@ -35,6 +35,7 @@ public class TaskControllerTest {
         task.setDueDate(LocalDate.now());
         try {
             taskController.save(task);
+            Assert.fail("Should not pass here");
         } catch (ValidationException e) {
             Assert.assertEquals("Fill the task description",e.getMessage());
         }
