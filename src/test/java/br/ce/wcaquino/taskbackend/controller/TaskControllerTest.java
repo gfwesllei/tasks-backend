@@ -3,6 +3,8 @@ package br.ce.wcaquino.taskbackend.controller;
 import br.ce.wcaquino.taskbackend.model.Task;
 import br.ce.wcaquino.taskbackend.repo.TaskRepo;
 import br.ce.wcaquino.taskbackend.utils.ValidationException;
+import org.dom4j.util.StringUtils;
+import org.hamcrest.text.IsEmptyString;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -33,6 +35,19 @@ public class TaskControllerTest {
     public void shouldNotSaveTaskWidhoutDecription() {
         Task task = new Task();
         task.setDueDate(LocalDate.now());
+        try {
+            taskController.save(task);
+            Assert.fail("Should not pass here");
+        } catch (ValidationException e) {
+            Assert.assertEquals("Fill the task description",e.getMessage());
+        }
+    }
+
+    @Test
+    public void shouldNotSaveTaskWidhEmptyDecription() {
+        Task task = new Task();
+        task.setDueDate(LocalDate.now());
+        task.setTask("");
         try {
             taskController.save(task);
             Assert.fail("Should not pass here");
