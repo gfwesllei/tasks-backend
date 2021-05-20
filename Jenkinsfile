@@ -42,6 +42,14 @@ pipeline{
                 }
             }
         }
+         stage('Build FrontEnd'){
+            steps{
+                dir('task-frontend'){
+                    git credentialsId: 'gfwesllei', url: 'https://github.com/gfwesllei/task-frontend'
+                    sh 'mvn clean package'
+                }
+            }
+        }
         
     }
 }
