@@ -71,6 +71,13 @@ pipeline{
                sh 'docker-compose up -d'
             }            
         }
+        stage('Run HealthCheck'){
+            steps{
+                sleep(10)
+                dir('functional-test-tasks'){
+                    sh 'mvn verify'
+                }
+            }
         
     }
 }
