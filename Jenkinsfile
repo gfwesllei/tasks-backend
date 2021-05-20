@@ -78,6 +78,7 @@ pipeline{
                     sh 'mvn verify'
                 }
             }
+        }
         
     }
 }
