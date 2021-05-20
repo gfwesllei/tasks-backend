@@ -50,6 +50,11 @@ pipeline{
                 }
             }
         }
+        stage('Deploy FrontEnd'){
+            steps{
+                deploy adapters: [tomcat8(credentialsId: 'tomcat_certo', path: '', url: 'http://localhost:8001/')], contextPath: 'tasks', war: 'target/tasks.war'
+            }
+        }
         
     }
 }
