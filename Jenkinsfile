@@ -37,7 +37,7 @@ pipeline{
         stage('API Test'){
             steps{
                 dir('api-test'){
-                    git credentialsId: 'gfwesllei', url: 'https://github.com/gfwesllei/task-api-test'
+                    git branch: 'main', credentialsId: 'gfwesllei', url: 'https://github.com/gfwesllei/task-api-test'
                     sh 'mvn test'
                 }
             }
@@ -45,7 +45,7 @@ pipeline{
          stage('Build FrontEnd'){
             steps{
                 dir('task-frontend'){
-                    git credentialsId: 'gfwesllei', url: 'https://github.com/gfwesllei/task-frontend'
+                    git credentialsId: 'gfwesllei', url: 'https://github.com/gfwesllei/tasks-frontend'
                     sh 'mvn clean package'
                 }
             }
