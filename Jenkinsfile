@@ -2,7 +2,7 @@ pipeline{
     agent any
     stages {
         stage('Just Test'){
-            step{
+            steps{
                 sh 'echo Just one Test!!'
             }
         }
