@@ -57,6 +57,14 @@ pipeline{
                 }
             }
         }
+        stage('Run FunctionalTest'){
+            steps{
+                dir('functional-test-tasks'){
+                    git branch: 'main', credentialsId: 'gfwesllei', url: 'https://github.com/gfwesllei/functional-test-tasks'
+                    sh 'mvn test'
+                }
+            }
+        }
         
     }
 }
