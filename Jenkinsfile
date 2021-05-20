@@ -23,8 +23,8 @@ pipeline{
         }
         stage{
             steps{
-                timout(time:1,unit:'MINUTES'){
-                    waitForQualityGate abortPipeline:true
+                timout(time: 1,unit: 'MINUTES'){
+                    waitForQualityGate abortPipeline: true
                 }
             }
         }
