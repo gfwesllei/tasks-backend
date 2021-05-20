@@ -5,7 +5,6 @@ pipelines{
             step{
                 sh 'echo Just one Test!!'
             }
-
         }
     }
 }
