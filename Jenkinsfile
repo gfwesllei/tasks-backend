@@ -75,7 +75,7 @@ pipeline{
             steps{
                 sleep(10)
                 dir('functional-test-tasks'){
-                    sh 'mvn -Dtest=HealthCheckIT test'
+                    sh 'mvn verify -Dfailsafe.runTests=true'
                 }
             }
         }
