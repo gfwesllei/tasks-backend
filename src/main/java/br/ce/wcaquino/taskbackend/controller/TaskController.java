@@ -23,7 +23,7 @@ public class TaskController {
 		return todoRepo.findAll();
 	}
 
-	@DeleteMapping
+	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<Void> delete(@PathVariable("id") Long id) throws ValidationException{
 		if(!todoRepo.existsById(id)){
 			throw new ValidationException("Task not found");
