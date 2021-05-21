@@ -89,5 +89,31 @@ public class TaskControllerTest {
         Mockito.verify(taskRepo).save(task);
     }
 
+    @Test
+    public void shouldReturnNotFoundTask(){
+
+        Long idDelete =1L;
+        Mockito.when(taskRepo.existsById(idDelete)).thenReturn(false);
+        try{
+            taskController.delete(idDelete);
+        }catch (ValidationException e){
+            Assert.assertEquals("Task not found",e.getMessage());
+        }
+    }
+
+
+    @Test
+    public void shouldDeleteTask(){
+
+        Long idDelete =1L;
+        Mockito.when(taskRepo.existsById(idDelete)).thenReturn(true);
+        try{
+            taskController.delete(idDelete);
+        }catch (ValidationException e){
+            Assert.assertEquals("Task not found",e.getMessage());
+        }
+        Mockito.verify(taskRepo).deleteById(idDelete);
+    }
+
 
 }
