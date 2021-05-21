@@ -1,18 +1,15 @@
 package br.ce.wcaquino.taskbackend.controller;
 
-import java.util.List;
-
+import br.ce.wcaquino.taskbackend.model.Task;
+import br.ce.wcaquino.taskbackend.repo.TaskRepo;
+import br.ce.wcaquino.taskbackend.utils.DateUtils;
+import br.ce.wcaquino.taskbackend.utils.ValidationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import br.ce.wcaquino.taskbackend.model.Task;
-import br.ce.wcaquino.taskbackend.repo.TaskRepo;
-import br.ce.wcaquino.taskbackend.utils.DateUtils;
-import br.ce.wcaquino.taskbackend.utils.ValidationException;
-
-import javax.websocket.server.PathParam;
+import java.util.List;
 
 @RestController
 @RequestMapping(value ="/todo")
@@ -27,7 +24,7 @@ public class TaskController {
 	}
 
 	@DeleteMapping
-	public ResponseEntity<Void> delete(@PathParam("id") Long id) throws ValidationException{
+	public ResponseEntity<Void> delete(@PathVariable("id") Long id) throws ValidationException{
 		if(!todoRepo.existsById(id)){
 			throw new ValidationException("Task not found");
 		}
