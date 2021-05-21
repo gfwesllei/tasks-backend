@@ -84,6 +84,7 @@ pipeline{
     post{
         always {
             junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml, api-test/target/surefire-reports/*.xml, Funtional-tests/target/surefire-reports/*.xml, Funtional-tests/target/failsafe-reports/*.xml'
+            archiveArtifacts artifacts: 'target/tasks-backend.war, tasks-frontend/target/tasks.war', followSymlinks: false, onlyIfSuccessful: true
         }
         unsuccessful{
             emailext attachLog: true, body: 'See the atached logs files', subject: 'The $PROJECT_NAME with $BUILD_NUMBER has fail', to: 'wesllei.gustavo+jenkins@gmail.com'
